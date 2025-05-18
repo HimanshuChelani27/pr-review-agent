@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-
+from typing import Any, Optional
 class PRReviewRequest(BaseModel):
     pr_url: str
     github_token: str | None = None
