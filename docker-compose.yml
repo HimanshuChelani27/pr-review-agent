@@ -1,1 +1,22 @@
- 
+ version: "3.9"
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    depends_on:
+      - celery_worker
+    env_file:
+      - .env
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    container_name: celery_worker
+    env_file:
+      - .env
